@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template-definition version="1.0" xmlns="http://www.polopoly.com/polopoly/cm/app/xml">
+
+  <input-template name="com.atex.plugins.link.Link.External">
+    <policy>com.atex.plugins.baseline.policy.BaselinePolicy</policy>
+    <editor>com.polopoly.cm.app.widget.OTopPolicyWidget</editor>
+    <viewer>com.polopoly.cm.app.widget.OTopPolicyWidget</viewer>
+    <field name="href" input-template="p.TextInput"
+           label="com.atex.plugins.link.Link.External.Href"
+           required="true">
+      <param name="maxlength">2048</param>
+      <param name="inlineHelp">true</param>
+      <help>com.atex.plugins.link.Link.External.help</help>
+    </field>
+  </input-template>
+
+  <input-template name="com.atex.plugins.link.Link.Internal">
+    <policy>com.atex.plugins.baseline.policy.BaselinePolicy</policy>
+    <editor>com.polopoly.cm.app.widget.OTopPolicyWidget</editor>
+    <viewer>com.polopoly.cm.app.widget.OTopPolicyWidget</viewer>
+    <field name="content" input-template="p.ContentSingleSelect"
+           label="com.atex.plugins.link.Link.Internal.Content" required="true">
+      <param name="allowArticles">true</param>
+      <idparam name="rootContent"><externalid>p.siteengine.Sites.d</externalid></idparam>
+      <param name="hierarchyModel">com.polopoly.cm.app.model.ContentListHierarchyModel</param>
+      <param name="inlineHelp">true</param>
+      <help>com.atex.plugins.link.Link.Internal.help</help>
+    </field>
+  </input-template>
+
+  <input-template name="com.atex.plugins.link.Link" label="com.atex.plugins.link.Link">
+    <policy>com.atex.plugins.link.LinkResourcePolicy</policy>
+    <editor>com.polopoly.cm.app.widget.OTopPolicyWidget</editor>
+    <viewer>com.polopoly.cm.app.widget.OTopPolicyWidget</viewer>
+    <editor contextName="orchid_SEARCHITEM">com.atex.plugins.baseline.widget.OSearchItemBaseWidget</editor>
+    <viewer contextName="orchid_SEARCHITEM">com.atex.plugins.baseline.widget.OSearchItemBaseWidget</viewer>
+    <editor contextName="orchid_TOCENTRY">com.atex.plugins.baseline.widget.OContentListEntryBasePolicyWidget</editor>
+    <viewer contextName="orchid_TOCENTRY">com.atex.plugins.baseline.widget.OContentListEntryBasePolicyWidget</viewer>
+    <type>Article</type>
+    <param name="renderTemplateIconInSelect">true</param>
+    <param name="ViewState_insert">false</param>
+    <param name="ViewState_refresh">true</param>
+    <param name="EditState_saveAndClose">true</param>
+    <param name="EditState_saveAndInsert">false</param>
+    <param name="EditState_saveAndFastInsert">false</param>
+    <param name="EditState_saveAndView">true</param>
+    <param name="EditNewState_saveAndClose">false</param>
+    <param name="EditNewState_saveAndInsert">true</param>
+    <param name="EditNewState_saveAndFastInsert">false</param>
+    <param name="EditNewState_saveAndView">false</param>
+    <param name="titleOfNewContent">com.atex.plugins.link.Link.new</param>
+    <param name="ViewState_copy">true</param>
+    <param name="cloneSecurityParent">currentOrHome</param>
+    <param name="metadataPath">categorization</param>
+
+    <layout name="menu" input-template="p.PageMenu">
+      <layout name="standard" input-template="p.Page" label="com.atex.plugins.link.Link.content">
+
+        <field name="name" input-template="p.ContentName" label="com.atex.plugins.link.Link.Text">
+          <param name="inlineHelp">true</param>
+          <help>com.atex.plugins.link.Link.Text.help</help>
+        </field>
+
+        <!-- link resource -->
+        <field name="link" input-template="p.SelectableSubField" label="com.atex.plugins.link.Link.LinkType">
+          <param name="inlineHelp">true</param>
+          <help>com.atex.plugins.link.Link.LinkType.help</help>
+          <field name="external" input-template="com.atex.plugins.link.Link.External"
+                 label="com.atex.plugins.link.Link.ExternalLink" />
+          <field name="internal" input-template="com.atex.plugins.link.Link.Internal"
+                 label="com.atex.plugins.link.Link.InternalLink" />
+        </field>
+
+        <field name="title" input-template="p.TextInput"
+               label="com.atex.plugins.link.Link.Title">
+          <param name="maxlength">1024</param>
+          <param name="inlineHelp">true</param>
+          <help>com.atex.plugins.link.Link.Title.help</help>
+        </field>
+
+      </layout>
+
+      <layout name="categorizationpage" input-template="p.Page" label="com.atex.plugins.link.Link.Categorization">
+        <param name="lazyInit">true</param>
+        <field name="categorization" input-template="p.Metadata" label="">
+          <param name="inlineHelp">true</param>
+          <help>com.atex.plugins.link.Link.Categorization.help</help>
+        </field>
+      </layout>
+
+      <layout name="settings" input-template="p.Page" label="com.atex.plugins.link.Link.Settings">
+        <param name="lazyInit">true</param>
+        <layout name="structure" input-template="p.Group">
+          <field name="securityParent" input-template="p.SecurityParentSelect" label="com.atex.plugins.link.Link.ParentPage">
+            <help>com.atex.plugins.link.Link.HomeDepartment.help</help>
+            <param name="inlineHelp">true</param>
+            <param name="width">320</param>
+            <param name="height">100</param>
+            <idparam name="rootContent">
+              <externalid>p.siteengine.Sites.d</externalid>
+            </idparam>
+          </field>
+          <field name="associatedSites" input-template="p.siteengine.SiteSelector" label="com.atex.plugins.link.Link.AssociatedSites">
+            <help>com.atex.plugins.link.Link.AssociatedSites.Help</help>
+            <param name="inlineHelp">true</param>
+            <param name="multipleSelect">true</param>
+            <param name="allowDepartments">true</param>
+            <param name="allowArticles">false</param>
+            <param name="width">320</param>
+            <param name="height">100</param>
+            <idparam name="rootContent">
+              <externalid>p.siteengine.Sites.d</externalid>
+            </idparam>
+          </field>
+
+          <field name="associatedUsers" input-template="p.AssociatedUsers" />
+
+        </layout>
+      </layout>
+
+    </layout>
+    <output-templates mode="www">
+      <id>com.atex.plugins.link.Link.ot</id>
+    </output-templates>
+    <output-templates mode="mobile">
+      <id>com.atex.plugins.link.Link.ot</id>
+    </output-templates>
+    <output-templates mode="link">
+      <id>com.atex.plugins.link.LinkLink.ot</id>
+    </output-templates>
+  </input-template>
+</template-definition>

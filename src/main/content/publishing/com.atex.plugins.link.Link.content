@@ -1,0 +1,4 @@
+id:.
+major:14
+# Publish main element template as a proper layout element in SiteEngine
+publish:p.siteengine.ElementLayoutTemplates.d

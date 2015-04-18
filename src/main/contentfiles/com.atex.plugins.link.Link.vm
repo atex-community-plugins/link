@@ -1,0 +1,1 @@
+#render({"content": $content, "outputTemplate": "com.atex.plugins.link.LinkLink.ot"})
