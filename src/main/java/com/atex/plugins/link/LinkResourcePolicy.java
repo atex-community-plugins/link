@@ -1,6 +1,7 @@
 package com.atex.plugins.link;
 
 import com.atex.onecms.content.ContentResult;
+import com.atex.onecms.content.ContentResultBuilder;
 import com.atex.onecms.content.ContentWrite;
 import com.atex.onecms.content.LegacyContentAdapter;
 import com.atex.onecms.content.metadata.MetadataInfo;
@@ -105,7 +106,7 @@ public class LinkResourcePolicy extends BaselinePolicy
         fileReference.setUrl((String) ModelPathUtil.get(policyModelDomain.getModel(this), "link/selected/href/value"));
         bean.setFileReference(fileReference);
 
-        return new ContentResult<>(bean);
+        return new ContentResultBuilder<LinkBean>().mainAspectData(bean).build();
     }
 
     @Override

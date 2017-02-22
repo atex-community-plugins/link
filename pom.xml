@@ -35,6 +35,12 @@
     <baseline.version>4.0.6-SNAPSHOT</baseline.version>
   </properties>
 
+  <scm>
+    <developerConnection>scm:git:git@github.com:atex-community-plugins/link.git</developerConnection>
+    <url>https://github.com/atex-community-plugins/link</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <dependencies>
 
     <dependency>
@@ -59,6 +65,12 @@
       <groupId>com.atex.plugins</groupId>
       <artifactId>baseline</artifactId>
       <version>${baseline.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -189,8 +201,23 @@
     </plugins>
   </reporting>
   <profiles>
+
     <profile>
       <id>deploy</id>
+
+      <distributionManagement>
+        <repository>
+          <name>Polopoly PD Plugins</name>
+          <id>polopoly-pd-plugins</id>
+          <url>http://maven.polopoly.com/nexus/content/repositories/polopoly-pd-plugins</url>
+        </repository>
+        <snapshotRepository>
+          <name>Polopoly PD Plugins Snapshots</name>
+          <id>polopoly-pd-plugins-snapshots</id>
+          <url>http://maven.polopoly.com/nexus/content/repositories/polopoly-pd-plugins-snapshots</url>
+        </snapshotRepository>
+      </distributionManagement>
+
       <build>
         <plugins>
           <plugin>
@@ -208,6 +235,7 @@
         </plugins>
       </build>
     </profile>
+
     <profile>
       <id>IT</id>
       <activation>
