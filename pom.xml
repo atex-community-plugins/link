@@ -1,28 +1,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- artifact description -->
+
+  <name>Link Plugin</name>
+
+  <description>
+    This is the link element plugin.
+  </description>
+
   <parent>
     <groupId>com.polopoly</groupId>
     <artifactId>public</artifactId>
-    <version>10.12.0</version>
+    <version>10.16.3-fp1</version>
     <relativePath />
   </parent>
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.atex.plugins</groupId>
-  <artifactId>link</artifactId>
-  <version>1.1</version>
-  <packaging>jar</packaging>
-  <name>File Plugin</name>
-  <description>
-    The Link Plugin for GONG.
-  </description>
+
   <organization>
     <name>Atex</name>
     <url>http://www.atex.com</url>
   </organization>
- 
+
+  <!-- artifact definition -->
+
+  <groupId>com.atex.plugins</groupId>
+  <artifactId>link</artifactId>
+  <version>2.4-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
   <properties>
-    <polopoly.version>10.12.0</polopoly.version>
-    <baseline.version>4.0.2</baseline.version>
-    <testnext.version>2.0.0</testnext.version>
+    <polopoly.version>10.16.3-fp1</polopoly.version>
+    <testnext.version>2.1.2</testnext.version>
+    <baseline.version>4.0.6-SNAPSHOT</baseline.version>
   </properties>
 
   <dependencies>
@@ -31,8 +41,18 @@
       <groupId>com.polopoly</groupId>
       <artifactId>polopoly</artifactId>
       <version>${polopoly.version}</version>
+      <classifier>api</classifier>
       <type>jar</type>
       <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.polopoly</groupId>
+      <artifactId>polopoly</artifactId>
+      <version>${polopoly.version}</version>
+      <type>jar</type>
+      <scope>runtime</scope>
+      <optional>true</optional>
     </dependency>
 
     <dependency>
@@ -53,6 +73,7 @@
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
       <version>1.9.5</version>
+      <scope>test</scope>
     </dependency>
 
   </dependencies>
@@ -160,7 +181,7 @@
             <link>http://docs.oracle.com/javase/7/docs/api/</link>
             <link>http://docs.oracle.com/javaee/1.4/api/</link>
           </links>
-          <javadocVersion>1.7</javadocVersion>
+          <javadocVersion>1.8</javadocVersion>
           <docfilessubdirs>true</docfilessubdirs>
           <maxmemory>512m</maxmemory>
         </configuration>
