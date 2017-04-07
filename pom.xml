@@ -35,6 +35,32 @@
     <baseline.version>4.0.6-SNAPSHOT</baseline.version>
   </properties>
 
+  <pluginRepositories>
+    <pluginRepository>
+      <id>polopoly-public</id>
+      <name>Polopoly Public</name>
+      <url>http://maven.polopoly.com/nexus/content/groups/polopoly-public</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <repositories>
+    <repository>
+      <id>polopoly-public</id>
+      <name>Polopoly Public</name>
+      <url>http://maven.polopoly.com/nexus/content/groups/polopoly-public</url>
+    </repository>
+    <repository>
+      <id>polopoly-plugins</id>
+      <name>Polopoly Plugins</name>
+      <url>http://maven.polopoly.com/nexus/content/groups/polopoly-plugins</url>
+    </repository>
+    <repository>
+      <id>polopoly-pd-plugins</id>
+      <name>Polopoly PD Plugins</name>
+      <url>http://maven.polopoly.com/nexus/content/repositories/polopoly-pd-plugins</url>
+    </repository>
+  </repositories>
+
   <scm>
     <developerConnection>scm:git:git@github.com:atex-community-plugins/link.git</developerConnection>
     <url>https://github.com/atex-community-plugins/link</url>
@@ -206,6 +232,7 @@
       </plugin>
     </plugins>
   </reporting>
+
   <profiles>
 
     <profile>
@@ -267,5 +294,6 @@
         </plugins>
       </build>
     </profile>
+
   </profiles>
 </project>
