@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.google.common.base.Strings;
 import com.polopoly.cm.ContentId;
 import com.polopoly.cm.client.CMException;
 import com.polopoly.cm.client.CmClient;
@@ -20,14 +21,15 @@ import com.polopoly.render.RenderRequest;
 import com.polopoly.siteengine.dispatcher.ControllerContext;
 import com.polopoly.siteengine.model.TopModel;
 import com.polopoly.siteengine.mvc.RenderControllerBase;
+import com.polopoly.util.StringUtil;
 
 /**
  * Render controller for {@link LinkResourcePolicy}.
- *
+ * <p>
  * <p>
  * If the request attribute ATTR_NAME_LINK_TEXT is present,
  * it is used as link text.
- *
+ * <p>
  * <p>
  * If the request attribute ATTR_NAME_LINK_ATTRS is present, all entries
  * in this map will be uses as attributes on the a tag. Note that the href
@@ -104,10 +106,33 @@ public class RenderControllerLinkResource extends RenderControllerBase {
 
         // Get title and put in attrs
         if (attrs.get("title") == null) {
-            String title = (String) ModelPathUtil.get(localModel, "content/title/value");
-
-            if (title != null) {
+            final String title = (String) ModelPathUtil.get(localModel, "content/title/value");
+            if (!Strings.isNullOrEmpty(title)) {
                 attrs.put("title", title);
+            }
+        }
+
+        // Get class and put in attrs
+        if (attrs.get("class") == null) {
+            final String className = (String) ModelPathUtil.get(localModel, "content/cssClass/value");
+            if (!Strings.isNullOrEmpty(className)) {
+                attrs.put("class", className);
+            }
+        }
+
+        // Get nofollow selection and put in attrs
+        if (attrs.get("rel") == null) {
+            final String nofollow = (String) ModelPathUtil.get(localModel, "content/nofollowCB/value");
+            if (StringUtil.equals(nofollow, "true")) {
+                attrs.put("rel", "nofollow");
+            }
+        }
+
+        // Get new window target selection and put in attrs
+        if (attrs.get("target") == null) {
+            final String target = (String) ModelPathUtil.get(localModel, "content/newWindowCB/value");
+            if (StringUtil.equals(target, "true")) {
+                attrs.put("target", "_blank");
             }
         }
 

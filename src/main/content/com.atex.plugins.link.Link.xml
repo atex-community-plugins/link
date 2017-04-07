@@ -53,6 +53,8 @@
     <param name="cloneSecurityParent">currentOrHome</param>
     <param name="metadataPath">categorization</param>
 
+    <content-list name="images" input-template="com.atex.plugins.link.ImageContentListWrapper" />
+
     <layout name="menu" input-template="p.PageMenu">
       <layout name="standard" input-template="p.Page" label="com.atex.plugins.link.Link.content">
 
@@ -60,6 +62,10 @@
           <param name="inlineHelp">true</param>
           <help>com.atex.plugins.link.Link.Text.help</help>
         </field>
+
+        <field name="nofollowCB" input-template="p.Checkbox" label="com.atex.plugins.link.Link.NoFollow" />
+
+        <field name="newWindowCB" input-template="p.Checkbox" label="com.atex.plugins.link.Link.NewWindow" />
 
         <!-- link resource -->
         <field name="link" input-template="p.SelectableSubField" label="com.atex.plugins.link.Link.LinkType">
@@ -76,6 +82,30 @@
           <param name="maxlength">1024</param>
           <param name="inlineHelp">true</param>
           <help>com.atex.plugins.link.Link.Title.help</help>
+        </field>
+
+        <field name="cssClass" input-template="p.TextInput" label="com.atex.plugins.link.Link.cssClass">
+          <param name="maxlength">1024</param>
+        </field>
+
+        <field name="imageCreator" input-template="p.ContentCreator" label="">
+          <param name="inlineHelp">true</param>
+          <help>com.atex.plugins.link.Link.Images.help</help>
+
+          <param name="createWithSecurityParent">true</param>
+          <param name="securityParentAlias">content-securityparent</param>
+          <param name="insertTargetAlias">content</param>
+          <param name="askInsertTarget">false</param>
+          <param name="insertionContentListName">images</param>
+          <param name="askInsertionContentListName">false</param>
+          <param name="askContentListPosition">false</param>
+          <param name="showCategorySelectWithOneCategory">false</param>
+          <param name="insertPosition">top</param>
+          <param name="concatenateCategories">true</param>
+          <param name="populateFromVariant">com.atex.plugins.link.image</param>
+        </field>
+        <field name="images" input-template="p.ContentListEntryContainer" label="com.atex.plugins.link.Link.Image">
+          <param name="contentListName">images</param>
         </field>
 
       </layout>

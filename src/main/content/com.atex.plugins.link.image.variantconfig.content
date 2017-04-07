@@ -1,0 +1,4 @@
+id:.
+major:3
+inputtemplate:com.polopoly.data.Variant.config
+component:composer:com.atex.standard.image.ImageContentDataBean:atex.onecms.ContentManager.identity

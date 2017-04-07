@@ -1,1 +1,7 @@
-<a #foreach($attr in $attrs.keySet()) $attr="$esc.html($attrs.get($attr))" #end>$!esc.html($text)</a>
+#if($content.images.list.size() > 0)
+<a #foreach($attr in $attrs.keySet()) $attr="$!esc.html($attrs.get($attr))" #end>
+  #renderwithfallback({"content":$content.images.list[0].content, "params":{"alt":"$!content.title.value"}})#end
+</a>
+#else
+<a #foreach($attr in $attrs.keySet()) $attr="$!esc.html($attrs.get($attr))" #end>$!esc.html($text)</a>
+#end

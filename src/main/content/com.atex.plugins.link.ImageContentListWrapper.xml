@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template-definition version="1.0" xmlns="http://www.polopoly.com/polopoly/cm/app/xml">
+  <input-template name="com.atex.plugins.link.ImageContentListWrapper">
+    <content-list-wrapper>com.polopoly.cm.app.policy.ConfigurableContentListWrapper</content-list-wrapper>
+    <param name="allowedFromVariant">com.atex.plugins.link.image</param>
+    <param name="maxSize">1</param>
+  </input-template>
+</template-definition>

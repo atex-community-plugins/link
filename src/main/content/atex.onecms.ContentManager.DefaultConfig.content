@@ -2,4 +2,5 @@
 id:.
 major:3
 inputtemplate:com.atex.onecms.content.ContentManager.config
+component:variantMapping:com.atex.plugins.link.image:com.atex.plugins.link.image.variantconfig
 component:inputTemplateMapping:com.atex.plugins.link.LinkBean:com.atex.plugins.link.Link
